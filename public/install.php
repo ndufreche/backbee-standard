@@ -367,7 +367,7 @@ switch ($step) {
             $em->flush();
             $step = 5;
 
-            $groups = \Symfony\Component\Yaml\Yaml::parse(__DIR__ . '/groups.yml');
+            $groups = \Symfony\Component\Yaml\Yaml::parse(dirname(__DIR__) . '/repository/Config/groups.yml');
 
             foreach ($groups as $groupName => $rights) {
                 $group = new \BackBee\Security\Group();
@@ -416,6 +416,14 @@ function setSiteGroupRights($site, $group, $rights)
 
         if (true === array_key_exists('bundles', $rights)) {
             addBundleRights($rights['bundles'], $aclProvider, $securityIdentity, $application);
+        }
+
+        if (true === array_key_exists('users', $rights)) {
+            addUserRights($rights['users'], $aclProvider, $securityIdentity);
+        }
+
+        if (true === array_key_exists('groups', $rights)) {
+            addGroupRights($rights['groups'], $aclProvider, $securityIdentity);
         }
     }
 }
@@ -511,6 +519,50 @@ function addFolderRights($folderDef, $aclProvider, $securityIdentity)
 
     if ('all' === $folderDef['resources']) {
         addClassAcl(new \BackBee\NestedNode\MediaFolder('*'), $aclProvider, $securityIdentity, $actions);
+    }
+}
+
+function addUserRights($userDef, $aclProvider, $securityIdentity)
+{
+    if (false === array_key_exists('resources', $userDef) || false === array_key_exists('actions', $userDef)) {
+        return array();
+    }
+
+    $actions = getActions($userDef['actions']);
+    if (0 === count($actions)) {
+        return array();
+    }
+
+    if (true === is_array($userDef['resources'])) {
+        foreach ($userDef['resources'] as $user_id) {
+            $user = $em->getRepository('BackBee\Security\User')->findBy(array('_id' => $user_id));
+
+            addObjectAcl($user, $aclProvider, $securityIdentity, $actions);
+        }
+    } elseif ('all' === $userDef['resources']) {
+        addClassAcl(new \BackBee\Security\User('*'), $aclProvider, $securityIdentity, $actions);
+    }
+}
+
+function addGroupRights($groupDef, $aclProvider, $securityIdentity)
+{
+    if (false === array_key_exists('resources', $groupDef) || false === array_key_exists('actions', $groupDef)) {
+        return array();
+    }
+
+    $actions = getActions($groupDef['actions']);
+    if (0 === count($actions)) {
+        return array();
+    }
+
+    if (true === is_array($groupDef['resources'])) {
+        foreach ($groupDef['resources'] as $group_id) {
+            $group = $em->getRepository('BackBee\Security\Group')->findBy(array('_id' => $group_id));
+
+            addObjectAcl($group, $aclProvider, $securityIdentity, $actions);
+        }
+    } elseif ('all' === $groupDef['resources']) {
+        addClassAcl(new \BackBee\Security\Group('*'), $aclProvider, $securityIdentity, $actions);
     }
 }
 

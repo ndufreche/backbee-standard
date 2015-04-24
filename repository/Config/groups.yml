@@ -20,6 +20,12 @@ administrator:
   bundles:
     resources: all
     actions: all
+  users:
+    resources: all
+    actions: all
+  groups:
+    resources: all
+    actions: all
 
 contributor:
   sites:
@@ -43,6 +49,12 @@ contributor:
   bundles:
     resources: all
     actions: all
+  users:
+    resources: all
+    actions: [view]
+  groups:
+    resources: all
+    actions: [view]
 
 validator:
   sites:
@@ -66,3 +78,9 @@ validator:
   bundles:
     resources: all
     actions: all
+  users:
+    resources: all
+    actions: [view]
+  groups:
+    resources: all
+    actions: [view]
