@@ -255,7 +255,7 @@ switch ($step) {
                 if (null === $layout = $em->find('BackBee\Site\Layout', md5('defaultlayout-' . $label))) {
                     $layout = new \BackBee\Site\Layout(md5('defaultlayout-' . $label));
                     $layout
-                        ->setData('{"templateLayouts":[{"title":"Layout : 12 col(s)","layoutSize":{"height":300,"width":false},"gridSizeInfos":{"colWidth":60,"gutterWidth":20},"id":"Layout__1332943638139_1","layoutClass":"bb4ResizableLayout","animateResize":false,"showTitle":false,"target":"#bb5-mainLayoutRow","resizable":true,"useGridSize":true,"gridSize":5,"gridStep":100,"gridClassPrefix":"span","selectedClass":"bb5-layout-selected","position":"none","height":800,"defaultContainer":"#bb5-mainLayoutRow","layoutManager":[],"mainZone":true,"accept":[""],"maxentry":"0","defaultClassContent":null}]}')
+                        ->setData('{"templateLayouts":[{"title":"Main Column","layoutSize":{"height":300,"width":false},"gridSizeInfos":{"colWidth":60,"gutterWidth":20},"id":"Layout__1332943638139_1","layoutClass":"bb4ResizableLayout","animateResize":false,"showTitle":false,"target":"#bb5-mainLayoutRow","resizable":true,"useGridSize":true,"gridSize":5,"gridStep":100,"gridClassPrefix":"span","selectedClass":"bb5-layout-selected","position":"none","height":800,"defaultContainer":"#bb5-mainLayoutRow","layoutManager":[],"mainZone":true,"accept":[""],"maxentry":"0","defaultClassContent":null}]}')
                         ->setLabel('Home')
                         ->setPath('Home.twig')
                         ->setPicPath($layout->getUid() . '.png')
