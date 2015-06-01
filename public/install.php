@@ -276,6 +276,18 @@ switch ($step) {
                     $em->persist($articleLayout);
                 }
 
+                // Category's layout
+                if (null === $categoryLayout = $em->find('BackBee\Site\Layout', md5('categorylayout-' . $label))) {
+                    $categoryLayout = new BackBee\Site\Layout(md5('articlelayout-' . $label));
+                    $categoryLayout
+                        ->setData('{"templateLayouts":[{"title":"Main Column","layoutSize":{"height":300,"width":false},"gridSizeInfos":{"colWidth":60,"gutterWidth":20},"id":"Layout__1332943638139_1","layoutClass":"bb4ResizableLayout","animateResize":false,"showTitle":false,"target":"#bb5-mainLayoutRow","resizable":true,"useGridSize":true,"gridSize":5,"gridStep":100,"gridClassPrefix":"span","selectedClass":"bb5-layout-selected","position":"none","height":800,"defaultContainer":"#bb5-mainLayoutRow","layoutManager":[],"mainZone":true,"accept":[""],"maxentry":"0","defaultClassContent":"Block/CategoryList"},{"title":"Right Pane","layoutSize":{"height":800,"width":false},"gridSizeInfos":{"colWidth":60,"gutterWidth":20},"id":"Layout__1383430750637_1","layoutClass":"bb5-resizableLayout","animateResize":false,"showTitle":false,"target":"#bb5-mainLayoutRow","resizable":true,"useGridSize":true,"gridSize":2,"gridStep":100,"gridClassPrefix":"span","selectedClass":"bb5-layout-selected","alphaClass":"alpha","omegaClass":"omega","typeClass":"hChild","clearAfter":1,"height":800,"defaultContainer":"#bb5-mainLayoutRow","layoutManager":[],"mainZone":false,"accept":[],"maxentry":0,"defaultClassContent":null}]}')
+                        ->setLabel('Category')
+                        ->setPicPath($categoryLayout->getUid() . '.png')
+                        ->setSite($site)
+                    ;
+                    $em->persist($categoryLayout);
+                }
+
                 // Creating site root page
                 if (null === $root = $em->find('BackBee\NestedNode\Page', md5('root-' . $label))) {
                     $pagebuilder
