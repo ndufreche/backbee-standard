@@ -1,0 +1,17 @@
+CategoryList:
+  extends: \BackBee\ClassContent\ContentSet
+  properties:
+    name : Category list
+    description: "Automated article listing from a category"
+    category: [!Block]
+  parameters:
+    rendermode: !!scalar category
+    accept: [BackBee\ClassContent\Article]
+    multipage: !!scalar off
+    recursive: !!scalar on
+    selector:
+      classcontent: [BackBee\ClassContent\Article]
+      parentnode: []
+      orderby: [date->value, desc]
+      limit: 9
+      rendertype: node-selector
