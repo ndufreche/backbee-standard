@@ -1,41 +1,11 @@
-<!DOCTYPE html>
-<html lang="fr">
+{% extends "Main.twig" %}
 
-    {{ this.partial('partials/header-head.twig')|raw }}
+{% block layout_css_class %}page-is-home{% endblock %}
 
-    <body>
-        {{ this.bbtoolbar()|raw }}
-
-        <div id="bb5-site-wrapper">
-            <div class="pane-wrapper" id="pane-wrapper">
-                <!-- Mobile Menu Pane -->
-                <div class="pane-asides">
-                    <div class="pane-aside" id="pane-menu">
-                    </div>
-                </div>
-                <!-- End Mobile Menu Pane -->
-
-                <!-- Content Pane -->
-                <div class="pane-content" id="pane-content">
-                    <div id="wrap-mobile">
-                        {{ this.navbar()|raw }}
-
-                        <!-- Wrap all page content here -->
-                        <div id="wrap">
-
-                            {{ this.container().first()|raw }}
-
-                        </div><!--/WRAP-->
-
-                        {{ this.partial('partials/footer.twig')|raw }}
-
-                    </div><!--/END WRAP MOBILE-->
-
-                </div><!-- End Content Pane -->
-
-            </div><!-- End pane-wrapper -->
-
-        </div><!-- End BB5-site-wrapper -->
-
-    </body>
-</html>
+{% block content %}
+<div class="contentcol row">
+    <div class="col-sm-12 content-area" id="content">
+        {{ this.container().first()|raw }}
+    </div>
+</div>
+{% endblock %}

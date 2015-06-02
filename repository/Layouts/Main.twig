@@ -1,0 +1,31 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    {{ this.partial('partials/header-head.twig')|raw }}
+</head>
+
+<!--[if lt IE 7]> <body class="lt-ie10 lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <body class="lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <body class="lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]>    <body class="lt-ie10"> <![endif]-->
+<!--[if gt IE 8 | !(IE)]><!-->
+<body>
+<!--<![endif]-->
+    {{ this.bbtoolbar()|raw }}
+
+    <div id="bb5-site-wrapper" class="{% block layout_css_class %}{% endblock %}">
+
+        {{ this.navbar()|raw }}
+
+        {# this.breadcrum()|raw // need helper creation #}
+
+        <!-- BEGIN MAINcontent -->
+        <section class="main container" role="main">
+            {% block content %}{% endblock %}
+        </section>
+        <!-- END MAINcontent -->
+
+        {{ this.partial('partials/footer.twig')|raw }}
+    </div>
+</body>
+</html>
