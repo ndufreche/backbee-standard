@@ -1,4 +1,4 @@
 #!/bin/bash
- 
+
 # Display the BackBee console
-./vendor/bin/backbee --app='\BackBee\Standard\Application'
+./vendor/bin/backbee --app='\BackBee\Standard\Application' $@
