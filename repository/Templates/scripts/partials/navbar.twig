@@ -1,14 +1,14 @@
 <ul{% if is_header %} id="nav-primary"{% endif %} class="nav navbar-nav nav-primary" role="navigation">
     {% if is_header %}
         <li>
-            <a href="{{ this.getUri('/') }}" class="navbar-brand{% if is_root %} nav-selected{% endif %}">
+            <a href="{{ bb.routing.getUri('/') }}" class="navbar-brand{% if is_root %} nav-selected{% endif %}">
                 <i class="fa fa-home"></i><span class="visuallyhidden">Accueil</span>
             </a>
         </li>
     {% endif %}
     {% for item in sections %}
         <li{% if selected and selected.getUid() == item.getUid() %} class="nav-selected"{% endif %} role="presentation">
-            <a href="{{ this.getUri(item.getUrl()) }}">{{ item.getTitle() }}</a>
+            <a href="{{ bb.routing.getUri(item.getUrl()) }}">{{ item.getTitle() }}</a>
         </li>
     {% endfor %}
 </ul>
