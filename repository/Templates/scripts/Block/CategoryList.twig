@@ -1,0 +1,9 @@
+<div class="box">
+    <h1>Title of Category</h1>
+
+    <div class="push-list">
+        {% for item in contents %}
+            {{ this.render(item)|raw }}
+        {% endfor %}
+    </div><!--/.push-list-->
+</div>
