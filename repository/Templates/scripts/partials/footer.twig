@@ -1,9 +1,60 @@
-<div id="footer">
-    <div class="container">
-    	<p class="text-muted credit">Visit <a href="http://www.backbee.com" target="_blank">BackBee.com</a>.</p>
+<!-- BEGIN FOOTER -->
+<footer id="footer" class="footer footer-wrapper" role="contentinfo">
+    <div class="footer-social">
+        <div class="container">
+          <!-- -->
+          <div class="row">
+                <div class="col-sm-3">
+                    <p class="logo-wrapper">
+                        <a href="#" title="Accueil">
+                            <img src="{{ this.getResourceUrl('img/logo.png') }}" alt="Accueil" class="logo">
+                        </a>
+                    </p>
+                </div>
+                <div class="col-sm-9 footer-toolbar-wrapper">
+                <div class="footer-toolbar">
+                    <p class="ttl">Follow us</p>
+                    <ul class="list-inline">
+                        <li>
+                            <a class="btn btn-square" href="#"><i class="fa fa-facebook"></i><span class="sr-only">Facebook</span></a>
+                        </li>
+                        <li>
+                            <a class="btn btn-square" href="#"><i class="fa fa-twitter"></i><span class="sr-only">Twitter</span></a>
+                        </li>
+                        <li>
+                            <a class="btn btn-square" href="#"><i class="fa fa-google-plus"></i><span class="sr-only">Google +</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /-->
     </div>
-</div>
-
-<!-- Script: Text overflow ellipsis -->
-<script type="application/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="{{ this.getResourceUrl('js/ellipsis.js') }}"></script>
+</div><!--/.footer-social-->
+<!--/-->
+    <div class="footer-nav">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    {{ this.navbar('footer')|raw }}
+                </div>
+            </div>
+        </div>
+    </div><!--/.footer-nav-->
+    <!--/.-->
+    <div class="footer-term">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- -->
+                    <ul class="list-inline">
+                        <li><a href="http://www.backbee.com">Backee.com</a></li>
+                    </ul>
+                    <!-- /-->
+                </div>
+            </div>
+        </div>
+    </div><!--/.footer-term-->
+</footer>
+<!-- END FOOTER -->
+{% include 'partials/footer-js.twig' %}

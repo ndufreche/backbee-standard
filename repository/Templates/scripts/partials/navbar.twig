@@ -1,72 +1,18 @@
-<!-- subheader -->
-<div id="subheader" class="{{ bb.request.session.get('selected-site-class') }}">
-    <div class="navbar navbar-default navbar-rub" role="navigation">
-        <div class="container">
-            <div class="navbar-wrapper collapse navbar-collapse"><!-- collapse navbar-collapse -->
-                <button class="btn navbar-nav-rub-toggle"><i class="fa fa-toggle-down"></i></button>
-                <ul class="nav navbar-nav navbar-nav-rub">
-                    <li>
-                        <a href="{{ this.getUri('/') }}" class="navbar-brand">
-                            <i class="fa fa-home"></i><span class="visuallyhidden">Accueil</span>
-                        </a>
-                    </li>
-                    {% for item in sections %}
-                        {% if 1 == item.getLevel() %}
-                            <li{% if selected and selected.getUid() == item.getUid() %} class="active"{% endif %}><a href="{{ this.getUri(item.getUrl()) }}" data-mega="mega{{ loop.index }}">{{ item.getTitle() }}</a></li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </div><!-- /.nav-collapse -->
-        </div><!-- /.container -->
-    </div><!-- /.navbar -->
-    <!-- meganav -->
-    <div class="relative">
-        <!-- -->
-        <div class="navbar-sub-rub border-b border-color border-bx2 border-color">
-        <!-- -->
-        {% set current_level = 0 %}
-        {% for item in sections %}
-            {% if 1 == item.getLevel() %}
-                {% if item.getLevel() <= current_level %}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-                {% endif %}
-            <div id="navbar-sub-rub-mega{{ loop.index }}" class="container">
-                <div class="row">
-                    <!-- -->
-                    <div class="col-sm-9 col-md-9" style="float: right;">
-                        <ul class="bxslider list-unstyled">
-                            <li>
-                                <div class="row">
-                                {% for article in articles[item.getUid()] %}
-                                    {{ this.render(article, 'subheader')|raw }}
-                                {% endfor %}
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+<ul{% if is_header %} id="nav-primary"{% endif %} class="nav navbar-nav nav-primary" role="navigation">
+    {% if is_header %}
+    <li>
+        <a href="{{ this.getUri('/') }}" class="navbar-brand{% if this.getCurrentPage().isRoot() %} nav-selected{% endif %}">
+            <i class="fa fa-home"></i><span class="visuallyhidden">Accueil</span>
+        </a>
+    </li>
+    {% endif %}
+    {% for item in sections %}
+        {% if 1 == item.getLevel() %}
+            <li{% if selected and selected.getUid() == item.getUid() %} class="nav-selected"{% endif %} role="presentation">
+                <a href="{{ this.getUri(item.getUrl()) }}">{{ item.getTitle() }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>
+<!-- /-->
 
-                    <div class="col-sm-3 col-md-3 navbar-sub-rub-list" data-scroller="true" id="mega{{ loop.index }}">
-                        <ul class="list-unstyled list-sub-rub">
-                            <li>
-                                <a class="title-normal cap" href="{{ this.getUri(item.getUrl()) }}">
-                                    <i class="fa fa-caret-right"></i> {{ item.getTitle() }}
-                                </a>
-                            </li>
-            {% elseif 2 == item.getLevel() %}
-                <li><a href="{{ this.getUri(item.getUrl()) }}">{{ item.getTitle() }}</a></li>
-            {% endif %}
-            {% set current_level = item.getLevel() %}
-        {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <!-- End meganav -->
-</div><!-- /#subheader -->
-<!-- END subheader-->
