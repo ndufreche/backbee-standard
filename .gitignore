@@ -2,8 +2,8 @@
 cache/*
 log/*
 vendor/*
-bundle/ToolbarBundle/*
 repository/Resources/toolbar/
+repository/Data/
 
 bootstrap.yml
 composer.lock

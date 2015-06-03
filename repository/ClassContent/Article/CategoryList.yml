@@ -3,7 +3,7 @@ CategoryList:
   properties:
     name : Category list
     description: "Automated article listing from a category"
-    category: [!Block]
+    category: [!Article]
   parameters:
     rendermode: !!scalar category
     accept: [BackBee\ClassContent\Article]
