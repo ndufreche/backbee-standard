@@ -5,7 +5,7 @@ namespace BackBee\Renderer\Helper;
 class navbar extends AbstractHelper
 {
 
-    public function __invoke($mode = null)
+    public function __invoke($position, $mode = null)
     {
         $application = $this->_renderer->getApplication();
         $repository = $application->getEntityManager()->getRepository('BackBee\NestedNode\Page');
@@ -34,10 +34,16 @@ class navbar extends AbstractHelper
             }
         }
 
+        $is_header = false;
+        if ($position == 'header') {
+            $is_header = true;
+        }
+
         $render = $this->_renderer->partial('partials/navbar.' . (null !== $mode ? $mode . '.' : '') . 'twig', [
             'sections' => $sections,
             'articles' => $articles,
             'selected' => $selected,
+            'is_header' => $is_header,
         ]);
 
         return $render;

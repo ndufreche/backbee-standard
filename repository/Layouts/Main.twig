@@ -15,7 +15,14 @@
 
     <div id="bb5-site-wrapper" class="{% block layout_css_class %}{% endblock %}">
 
-        {{ this.navbar()|raw }}
+        {{ this.partial('partials/header.twig')|raw }}
+        <!-- BEGIN NAV DESKTOP -->
+        <nav id="nav" class="nav navbar-wrapper">
+            <div class="container">
+                {{ this.navbar('header')|raw }}
+            </div>
+        </nav>
+        <!-- BEGIN NAV DESKTOP -->
 
         {# this.breadcrum()|raw // need helper creation #}
 
