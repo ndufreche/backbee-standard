@@ -1,0 +1,34 @@
+AutoBlock:
+    extends: \BackBee\ClassContent\ContentSet
+    properties:
+        name : Category list
+        description: "Automated article listing from a category"
+        category: [!Article]
+    parameters:
+        accept: [BackBee\ClassContent\Article]
+        delta:
+            type: text
+            value: 0
+            label: 'Ignore the "x" first elements'
+        parent_node:
+            type: nodeSelector
+            value: []
+            label: 'Page'
+        start:
+            value: 0
+        content_to_show:
+            value: [BackBee\ClassContent\Article]
+        limit:
+            type: text
+            value: 10
+            label: "Number of elements to display"
+        multipage:
+            type: checkbox
+            options:
+                'multipage': 'Multipage'
+            value: []
+        recursive:
+            type: checkbox
+            options:
+                'recursive': 'Recursive'
+            value: ['recursive']
