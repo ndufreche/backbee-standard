@@ -3,10 +3,9 @@
 		<img {{ this.bbcontent(image)|raw }}
 			src="{{ image.path ? this.getImageUrl(image.path)|raw : '' }}"
 			alt="{{ title }}" style="width: 100%" itemprop="contentURL">
-
-	    <figcaption class="figure-caption" itemprop="description">
-			<p class="figure-copyright">{{ copyrights }}</p>
-	        <p>{{ description }}</p>
-	    </figcaption>
+    	    <figcaption class="figure-caption" itemprop="description">
+                {% if copyrights != '' %}<p class="figure-copyright">{{ copyrights }}</p>{% endif %}
+                {% if description != '' %}<p>{{ description }}</p>{% endif %}
+    	    </figcaption>
 	</figure>
 {% endif %}

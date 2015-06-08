@@ -7,3 +7,6 @@ social.facebook.prerender:
 social.twitter.prerender:
   listeners:
     - [BackBee\Event\Listener\SocialListener, onPreRenderTwitter]
+article.article.render:
+  listeners:
+    - [BackBee\Event\Listener\ArticleListener, onRender]
