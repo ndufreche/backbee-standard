@@ -1,3 +1,9 @@
 block.categorylist.render:
   listeners:
     - [BackBee\Event\Listener\AutoblockListener, onRender]
+social.facebook.prerender:
+  listeners:
+    - [BackBee\Event\Listener\SocialListener, onPreRenderFacebook]
+social.twitter.prerender:
+  listeners:
+    - [BackBee\Event\Listener\SocialListener, onPreRenderTwitter]
