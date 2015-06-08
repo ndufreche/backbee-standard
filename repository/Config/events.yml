@@ -1,4 +1,4 @@
-block.categorylist.render:
+article.categorylist.render:
   listeners:
     - [BackBee\Event\Listener\AutoblockListener, onRender]
 social.facebook.prerender:
