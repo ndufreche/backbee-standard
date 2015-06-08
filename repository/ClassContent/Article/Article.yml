@@ -19,7 +19,7 @@ Article:
             type: BackBee\ClassContent\Element\Text
             label: Abstract
             default:
-                value: Your abstract here...
+                value: '<span class="first-letter">Y</span>our abstract here'
             maxentry: 1
             parameters:
                 rte: lite
@@ -37,6 +37,6 @@ Article:
         permid: !!scalar
     parameters:
         excludefromautobloc:
-            rendertype: checkbox
+            type: checkbox
             label: Exclude from autobloc
             checked: false
