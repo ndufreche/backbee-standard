@@ -32,18 +32,30 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class AutoblockListener extends Event
 {
+    /**
+     * @var BackBee\BBApplication
+     */
     private static $application;
+
+    /**
+     * @var Doctrine\ORM\EntityManager
+     */
     private static $em;
+
+    /**
+     * @var BackBee\Renderer\Renderer
+     */
+    private static $renderer;
 
     public static function onRender(Event $event)
     {
-        $renderer = $event->getEventArgs();
-        self::$application = $renderer->getApplication();
+        self::$application = self::$renderer->getApplication();
         self::$em = self::$application->getEntityManager();
+        self::$renderer = $event->getEventArgs();
 
-        $content = $renderer->getObject();
+        $content = self::$renderer->getObject();
 
-        $selector = ['parentnode' => self::getParentNode($content->getParamValue('parent_node'))];
+        $selector = ['parentnode' => [self::getParentNodeUid($content->getParamValue('parent_node'))]];
 
         $contents = self::$em->getRepository('BackBee\ClassContent\AbstractClassContent')
                              ->getSelection(
@@ -52,7 +64,7 @@ class AutoblockListener extends Event
                                  in_array('recursive', $content->getParamValue('recursive')),
                                  (int) $content->getParamValue('start'),
                                  (int) $content->getParamValue('limit'),
-                                 true,
+                                 self::$application->getBBUserToken() === null,
                                  false,
                                  (array) $content->getParamValue('content_to_show'),
                                  (int) $content->getParamValue('delta')
@@ -60,11 +72,11 @@ class AutoblockListener extends Event
 
         $count = $contents instanceof Paginator ? $contents->count() : count($contents);
 
-        $renderer->assign('contents', $contents);
-        $renderer->assign('nbContents', $count);
+        self::$renderer->assign('contents', $contents);
+        self::$renderer->assign('nbContents', $count);
     }
 
-    private static function getParentNode($parentNodeParam)
+    private static function getParentNodeUid($parentNodeParam)
     {
         $parentNode = null;
 
@@ -73,9 +85,9 @@ class AutoblockListener extends Event
                 $parentNode = self::$em->getRepository('BackBee\NestedNode\Page')->find($parentNodeParam['pageUid']);
             }
         } else {
-            $parentNode = self::$application->getCurrentPage();
+            $parentNode = self::$renderer->getCurrentPage();
         }
 
-        return $parentNode;
+        return ($parentNode !== null) ? $parentNode->getUid() : null;
     }
 }
