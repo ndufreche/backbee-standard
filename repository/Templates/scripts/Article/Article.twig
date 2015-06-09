@@ -1,23 +1,29 @@
-<article {{ this.bbcontent(null, {'class': 'article box-wrapper'})|raw }} itemscope itemtype="http://schema.org/Article">
+<div {{ this.bbcontent()|raw }}>
 
-    <h1 {{ this.bbcontent(title)|raw }} itemprop="headline">{{ title.value|raw }}</h1>
+    <article class="article box-wrapper" itemscope itemtype="http://schema.org/Article">
 
-    <p class="metadata-wrapper">
-        {% if tag is not null %}
-        <strong class="metadata-tag">{{ tag }}</strong>
-        {% endif %}
-        {% if signature != '' %}
-            <b class="metadata-author">By {{ signature|raw }}</b>
-        {% endif %}
-        <time class="time" itemprop="datePublished">{{ this.getObject().getCreated()|date("Y-m-d") }}</time>
-    </p>
+        <h1 {{ this.bbcontent(title)|raw }} itemprop="headline">{{ title.value|raw }}</h1>
 
-    <div itemtype="http://schema.org/ImageObject" itemprop="primaryImageOfPage">
-        {{ this.render(image, null, {'class': 'figure block-fullwidth'})|raw }}
-    </div>
+        <p class="metadata-wrapper">
+            {% if tag is not null %}
+            <strong class="metadata-tag">{{ tag }}</strong>
+            {% endif %}
+            {% if signature != '' %}
+                <b class="metadata-author">By {{ signature|raw }}</b>
+            {% endif %}
+            <time class="time" itemprop="datePublished">{{ this.getObject().getCreated()|date("Y-m-d") }}</time>
+        </p>
 
-    <p {{ this.bbcontent(abstract, {'class': 'chapo'})|raw }} itemprop="description">{{ abstract.value|raw }}</p>
+        <div itemtype="http://schema.org/ImageObject" itemprop="primaryImageOfPage">
+            {{ this.render(image, null, {'class': 'figure block-fullwidth'})|raw }}
+        </div>
 
-    {{ this.render(body)|raw }}
+        <p {{ this.bbcontent(abstract, {'class': 'chapo'})|raw }} itemprop="description">{{ abstract.value|raw }}</p>
 
-</article>
+        {{ this.render(body)|raw }}
+
+    </article>
+
+    {{ this.render(related)|raw }}
+
+</div>

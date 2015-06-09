@@ -37,9 +37,11 @@ class ArticleListener extends Event
 
         $content = $renderer->getObject();
         $tag = null;
+        $url = '#';
         $mainNode = $content->getMainNode();
 
         if ($mainNode !== null) {
+            $url = $renderer->getUri($mainNode->getUrl());
             $parentNode = $mainNode->getParent();
             if (null !== $parentNode) {
                 $tag = (!empty($parentNode->getAltTitle())) ? $parentNode->getAltTitle() : $parentNode->getTitle();
@@ -47,5 +49,6 @@ class ArticleListener extends Event
         }
 
         $renderer->assign('tag', $tag);
+        $renderer->assign('url', $url);
     }
 }
