@@ -36,7 +36,16 @@ Article:
         signature: !!scalar
         permid: !!scalar
     parameters:
-        excludefromautobloc:
+        rendermode_autoblock:
+            type: select
+            label: 'Rendermode in autoblock'
+            options:
+                block-fullwidth: 'Image full width'
+                block-right: 'Image right'
+                no-image: 'No image'
+            value: ['block-fullwidth']
+        exclude_from_autoblock:
             type: checkbox
-            label: Exclude from autobloc
-            checked: false
+            options:
+                exclude: 'Exclude from autoblock'
+            value: []
