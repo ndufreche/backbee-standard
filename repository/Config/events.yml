@@ -1,12 +1,19 @@
 block.autoblock.render:
   listeners:
     - [BackBee\Event\Listener\AutoblockListener, onRender]
+
 social.facebook.prerender:
   listeners:
     - [BackBee\Event\Listener\SocialListener, onPreRenderFacebook]
+
 social.twitter.prerender:
   listeners:
     - [BackBee\Event\Listener\SocialListener, onPreRenderTwitter]
+
 article.article.render:
   listeners:
     - [BackBee\Event\Listener\ArticleListener, onRender]
+
+article.quote.render:
+  listeners:
+    - [BackBee\Event\Listener\QuoteListener, onRender]
