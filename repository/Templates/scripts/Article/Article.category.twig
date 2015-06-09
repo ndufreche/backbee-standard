@@ -1,4 +1,4 @@
-<li {{ this.bbcontent(null) }}>
+<li {{ this.bbcontent(null)|raw }}>
 
     {% set rmAutoblock = this.getObject().getParamValue('rendermode_autoblock')|first %}
 
