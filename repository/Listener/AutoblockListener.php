@@ -54,8 +54,9 @@ class AutoblockListener extends Event
         self::$em = self::$application->getEntityManager();
 
         $content = self::$renderer->getObject();
+        $parentNode = self::getParentNode($content->getParamValue('parent_node'));
 
-        $selector = ['parentnode' => [self::getParentNodeUid($content->getParamValue('parent_node'))]];
+        $selector = ['parentnode' => [($parentNode !== null) ? $parentNode->getUid() : null]];
 
         $contents = self::$em->getRepository('BackBee\ClassContent\AbstractClassContent')
                              ->getSelection(
@@ -74,9 +75,10 @@ class AutoblockListener extends Event
 
         self::$renderer->assign('contents', $contents);
         self::$renderer->assign('nbContents', $count);
+        self::$renderer->assign('parentNode', $parentNode);
     }
 
-    private static function getParentNodeUid($parentNodeParam)
+    private static function getParentNode($parentNodeParam)
     {
         $parentNode = null;
 
@@ -88,6 +90,6 @@ class AutoblockListener extends Event
             $parentNode = self::$renderer->getCurrentPage();
         }
 
-        return ($parentNode !== null) ? $parentNode->getUid() : null;
+        return $parentNode;
     }
 }
