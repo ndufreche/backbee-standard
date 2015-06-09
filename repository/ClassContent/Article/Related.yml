@@ -1,10 +1,12 @@
 Related:
-  extends: \BackBee\ClassContent\ContentSet
-  properties:
-    name: Linked articles
-    description: "A block that displays linked articles. Contains: ContentSet, Article"
-    category: [!Article]
-    clonemode: inherited
-  parameters:
-    rendermode: related
-    accept: [BackBee\ClassContent\Article]
+    properties:
+        name: Linked articles
+        description: "A block that display linked articles. Contains: ContentSet, Article"
+        category: [!Article]
+    elements:
+        left:
+            type: BackBee\ClassContent\Article\RelatedContainer
+        middle:
+            type: BackBee\ClassContent\Article\RelatedContainer
+        right:
+            type: BackBee\ClassContent\Article\RelatedContainer
