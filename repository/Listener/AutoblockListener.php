@@ -49,9 +49,9 @@ class AutoblockListener extends Event
 
     public static function onRender(Event $event)
     {
+        self::$renderer = $event->getEventArgs();
         self::$application = self::$renderer->getApplication();
         self::$em = self::$application->getEntityManager();
-        self::$renderer = $event->getEventArgs();
 
         $content = self::$renderer->getObject();
 

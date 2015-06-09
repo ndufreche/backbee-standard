@@ -1,11 +1,9 @@
 AutoBlock:
-    extends: \BackBee\ClassContent\ContentSet
     properties:
         name : Autoblock
         description: "Automated content listing"
         category: [!Article]
     parameters:
-        accept: [BackBee\ClassContent\Article\Article]
         delta:
             type: text
             value: 0
