@@ -1,0 +1,9 @@
+Slider:
+  properties:
+    name: "Slider"
+    description: "Slider containing image, text and link slides"
+    category: [Home]
+  elements:
+    slides:
+      type: \BackBee\ClassContent\Home\SliderContainer
+      label: "Slides Section"
