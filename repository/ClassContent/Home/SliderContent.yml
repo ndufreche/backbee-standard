@@ -1,0 +1,8 @@
+SliderContent:
+  extends: \BackBee\ClassContent\ContentSet
+  properties:
+    name: "Slider containt"
+    description: "Slider slides container"
+    category: [!Home]
+  parameters:
+    accept: BackBee\ClassContent\Home\Slide

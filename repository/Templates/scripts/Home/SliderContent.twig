@@ -1,0 +1,5 @@
+<div {{ this.bbcontent(null, {class: 'slider-list'})|raw }}>
+    {% for slide in this.getObject().getData() %}
+        {{ this.render(slide)|raw }}
+    {% endfor %}
+</div>
