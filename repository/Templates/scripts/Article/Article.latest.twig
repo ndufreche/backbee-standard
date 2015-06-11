@@ -4,6 +4,6 @@
         <time itemprop="dateCreated" class="time">{{ this.getObject().getCreated()|date("Y-m-d") }}</time>
     </p>
     <p class="chapo">
-        <a href="{{ url }}">{{ abstract.value|truncate(60)|raw }}</a>
+        <a href="{{ url }}">{{ title.value|truncate(60)|raw }}</a>
     </p>
 </li>
