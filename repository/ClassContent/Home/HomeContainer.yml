@@ -2,7 +2,7 @@ HomeContainer:
     properties:
         name: home container
         description: ""
-        category: [Home]
+        category: [!Home]
     elements:
         container:
             type: BackBee\ClassContent\Container\OneColumn
