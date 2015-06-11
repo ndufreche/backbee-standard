@@ -7,7 +7,7 @@
             <p {{ this.bbcontent(text, {'class': 'ttl'})|raw }}>{{ text.value|raw }}</p>
         </div>
         <div class="content-footer">
-            {% if link is not empty %}
+            {% if link.url is not empty %}
                 <p>
                     <a href="{{ link.url }}" target="{{ link.target }}">{{ link.title }}</a>
                 </p>
