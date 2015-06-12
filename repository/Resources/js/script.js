@@ -37,60 +37,19 @@ jQuery(document).ready(function() {
   $('.btn-printer').on('click', function(e) {
       e.preventDefault(); window.print();
   });
-  
+
   //Video RWD
-  $(".content-video iframe").resizeEmbed(); 
-	
+  $(".content-video iframe").resizeEmbed();
+
   //RWD table - 991px
   $("table.table-responsive").tableRwd({breakpoint:991});
 
-  //NAV main - .rwd-is-desktop 
-  $('.navbar-wrapper').affix(); 
+  //NAV main - .rwd-is-desktop
+  $('.navbar-wrapper').affix();
 
 
 //END ready
 });
-
-
-// Window Load
-$(window).load(function(){
-	//FW
-	$('.slider-wrapper.slider-fw .slider-list').each(function(){
-		var owl = $(this);
-		var hasPagination = ($(this).hasClass("slider-has-pagination")) ? true : false;
-		owl.owlCarousel({
-			pagination: hasPagination, 
-			singleItem: true, 
-			navigation: true, 
-			autoPlay: 6000, //default 5000 
-			autoHeight: true, 
-			lazyLoad: true, 
-			navigationText: ["<i class=\"fa fa-angle-left\"></i>","<i class=\"fa fa-angle-right\"></i>"],
-			afterInit : function(){
-				//console.log("ignition done");
-				//
-				owl.parent(".slider-wrapper").removeClass('slider-loader');
-				//
-			}, 
-			beforeMove : function(){
-				//console.log("move done");
-				//
-				owl.parent(".slider-wrapper").find('.owl-item').eq(this.owl.currentItem).find('.figcaption .ttl').removeClass('animated fadeIn');
-				//
-			},
-			afterMove : function(){
-				//console.log("move done");
-				//
-				owl.parent(".slider-wrapper").find('.owl-item').eq(this.owl.currentItem).find('.figcaption .ttl').addClass('animated fadeIn');
-				//
-			}
-		//
-		});
-	});
-	//
-
-});
-// End window load
 
 
 //initShortcuts
@@ -98,9 +57,9 @@ $.fn.initShortcuts = function(options) {
 
   var obj = $(this);
   obj.find('a').focus(function(e) {obj.css('height', 'auto'); });
-  obj.find('a').blur(function(e) {obj.css('height', '0px'); });     
-  
-  return this;        
+  obj.find('a').blur(function(e) {obj.css('height', '0px'); });
+
+  return this;
 };
 
 
@@ -122,13 +81,13 @@ $.fn.resizeEmbed = function(options) {
       .height(newWidth * $(this).attr('data-aspectRatio'));
     });
 
-    $(window).on("resize",function() { 
+    $(window).on("resize",function() {
        obj.each(function() {
         var newWidth = $(this).parent().width();
         $(this)
           .width(newWidth)
           .height(newWidth * $(this).attr('data-aspectRatio'));
-       });                                
+       });
     });
 
     return this;
@@ -136,7 +95,7 @@ $.fn.resizeEmbed = function(options) {
 
 
 //FN Table RWD
-//MOD - based on: http://zurb.com/playground/playground/responsive-tables/responsive-tables.js 
+//MOD - based on: http://zurb.com/playground/playground/responsive-tables/responsive-tables.js
 $.fn.tableRwd = function(options) {
   var defaults = {
     breakpoint : 991
