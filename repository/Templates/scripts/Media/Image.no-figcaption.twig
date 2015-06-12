@@ -1,8 +1,5 @@
 {% if bb.token != null or image.path != '' %}
-
-    {% set params = {'class': 'figure ' ~ this.getParam('class')} %}
-
-    <figure {{ this.bbcontent(null, params)|raw }}>
+    <figure {{ this.bbcontent()|raw }}>
         <img {{ this.bbcontent(image)|raw }}
             src="{{ image.path ? this.getImageUrl(image.path)|raw : '' }}"
             alt="{{ title }}" style="width: 100%" itemprop="contentURL">
