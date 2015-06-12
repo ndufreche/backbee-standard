@@ -1,0 +1,16 @@
+ColumnDivider:
+    properties:
+        name : Column divider
+        description: "Column divider"
+        category: [Block]
+    elements:
+        first_container:
+            type: \BackBee\ClassContent\ContentSet
+        second_container:
+            type: \BackBee\ClassContent\ContentSet
+        third_container:
+            type: \BackBee\ClassContent\ContentSet
+    parameters:
+        rendermode:
+            type: "select"
+            value: []
