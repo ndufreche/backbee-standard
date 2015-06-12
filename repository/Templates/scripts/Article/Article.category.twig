@@ -5,7 +5,7 @@
     <article class="push-item content content-txt-img content-news" itemscope itemtype="http://schema.org/BlogPosting">
         {% if rmAutoblock == 'block-right' %}
             <a href="{{ url }}">
-                {{ this.render(image, 'no-figcaption', {'class': rmAutoblock})|raw }}
+                {{ this.render(image, 'no-figcaption', {'class': 'figure ' ~ rmAutoblock})|raw }}
             </a>
         {% endif %}
         <div class="content-inner-pad">
@@ -21,7 +21,7 @@
             </p>
             {% if rmAutoblock == 'block-fullwidth' %}
                 <a href="{{ url }}">
-                    {{ this.render(image, 'no-figcaption', {'class': rmAutoblock})|raw }}
+                    {{ this.render(image, 'no-figcaption', {'class': 'figure ' ~ rmAutoblock})|raw }}
                 </a>
             {% endif %}
             <p class="chapo" itemprop="description">{{ abstract.value|raw }}</p>
