@@ -50,9 +50,11 @@
 
             {{ this.breadcrumb()|raw }}
 
-            <section class="main container" role="main">
+            {% block beforeMainContent %}{% endblock %}
+
+            <div class="main container" role="main" itemprop="mainContentOfPage">
                 {% block content %}{% endblock %}
-            </section>
+            </div>
 
             {{ this.partial('partials/footer.twig')|raw }}
         </div>
