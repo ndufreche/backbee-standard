@@ -48,9 +48,9 @@
                 </div>
             </nav>
 
-            {{ this.breadcrumb()|raw }}
-
-            {% block beforeMainContent %}{% endblock %}
+            {% block beforeMainContent %}
+                {{ this.breadcrumb()|raw }}
+            {% endblock %}
 
             <div class="main container" role="main" itemprop="mainContentOfPage">
                 {% block content %}{% endblock %}
