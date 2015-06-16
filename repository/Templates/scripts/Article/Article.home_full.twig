@@ -4,7 +4,7 @@
     </a>
     <div class="content-inner-pad">
         <h2 itemprop="headline">
-            <a href="{{ url }}">{{ title.value|raw }}</a>
+            <a href="{{ url }}" {{ this.bbcontent(title)|raw }} >{{ title.value|raw }}</a>
         </h2>
             <p class="metadata-wrapper">
                 <b class="metadata-tag">{{ tag }}</b>
@@ -13,6 +13,6 @@
                 {% endif %}
                 <time class="time" itemprop="dateCreated">{{ this.getObject().getCreated()|date("Y-m-d") }}</time>
             </p>
-        <p class="chapo" itemprop="description">{{ abstract.value|raw }}</p>
+        <p {{ this.bbcontent(abstract, {'class': 'chapo'})|raw }} itemprop="description">{{ abstract.value|raw }}</p>
     </div>
 </article>
