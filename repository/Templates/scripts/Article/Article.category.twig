@@ -10,7 +10,7 @@
         {% endif %}
         <div class="content-inner-pad">
             <h2 itemprop="headline">
-                <a href="{{ url }}">{{ title.value|raw }}</a>
+                <a href="{{ url }}" {{ this.bbcontent(title)|raw }} >{{ title.value|raw }}</a>
             </h2>
             <p class="metadata-wrapper">
                 <b class="metadata-tag">{{ tag }}</b>
@@ -24,7 +24,7 @@
                     {{ this.render(image, 'no-figcaption', {'class': 'figure ' ~ rmAutoblock})|raw }}
                 </a>
             {% endif %}
-            <p class="chapo" itemprop="description">{{ abstract.value|raw }}</p>
+            <p {{ this.bbcontent(abstract, {'class': 'chapo'})|raw }} itemprop="description">{{ abstract.value|raw }}</p>
         </div>
     </article>
 </li>
