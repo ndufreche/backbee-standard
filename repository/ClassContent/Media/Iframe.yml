@@ -1,12 +1,12 @@
-Video:
+Iframe:
     properties:
-        name: Video
+        name: Iframe
         description: "A block video"
         category: [Media]
     elements:
         videoframe:
             type: BackBee\ClassContent\Element\Text
-            label: Video integration
+            label: Iframe integration
             default:
                 value: '<iframe width="560" height="315" src="https://www.youtube.com/embed/YeWZaLfAYN4" frameborder="0" allowfullscreen></iframe>'
             maxentry: 1

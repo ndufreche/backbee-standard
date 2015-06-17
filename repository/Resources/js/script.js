@@ -38,9 +38,6 @@ jQuery(document).ready(function() {
       e.preventDefault(); window.print();
   });
 
-  //Video RWD
-  $(".content-video iframe").resizeEmbed();
-
   //RWD table - 991px
   $("table.table-responsive").tableRwd({breakpoint:991});
 
@@ -63,8 +60,7 @@ $.fn.initShortcuts = function(options) {
 };
 
 
-//FN Video RWD
-$.fn.resizeEmbed = function(options) {
+var resizeEmbed = function(options) {
     var defaults = {
     };
     var options = $.extend(defaults, options);
@@ -92,6 +88,11 @@ $.fn.resizeEmbed = function(options) {
 
     return this;
 };
+
+window.resizeEmbed = resizeEmbed;
+
+//FN Video RWD
+$.fn.resizeEmbed = resizeEmbed;
 
 
 //FN Table RWD
