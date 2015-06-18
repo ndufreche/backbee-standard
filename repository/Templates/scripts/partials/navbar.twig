@@ -1,4 +1,4 @@
-<ul{% if is_header %} id="nav-primary"{% endif %} class="nav navbar-nav nav-primary" role="navigation">
+<ul{% if is_header %} id="nav-primary"{% endif %} class="nav navbar-nav {% if is_header %}nav-primary{% else %}nav-footer-map{% endif %}" role="navigation">
     {% if is_header %}
         <li>
             <a href="{{ bb.routing.getUri('/') }}" class="navbar-brand{% if is_root %} nav-selected{% endif %}">
