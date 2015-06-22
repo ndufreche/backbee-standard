@@ -1,0 +1,34 @@
+ClickableThumbnail:
+    properties:
+        name: Clickable Thumbnail
+        description: A clickable media image
+        labelized-by: title->value
+        category: [Media]
+    traits: [BackBee\Traits\MediaImageNameTrait,BackBee\Traits\MediaImageJsonSerializeTrait]
+    elements:
+        title:
+            type: BackBee\ClassContent\Element\Text
+            label: Title
+            default:
+                value: "Clickable thumbnail"
+            parameters:
+                rte: lite
+        image:
+            type: BackBee\ClassContent\Element\Image
+            label: Image
+        text_caption:
+            type: BackBee\ClassContent\Element\Text
+            label: Text caption
+            default:
+                value: "Text caption"
+            parameters:
+                rte: lite
+    parameters:
+        link_image:
+            type: "text"
+            value: ~
+            label: "Image link"
+        link_caption:
+            type: "text"
+            value: ~
+            label: "Caption link: if empty Image link is used"
