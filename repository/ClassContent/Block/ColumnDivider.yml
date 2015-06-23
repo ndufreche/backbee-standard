@@ -10,6 +10,8 @@ ColumnDivider:
             type: \BackBee\ClassContent\ContentSet
         third_container:
             type: \BackBee\ClassContent\ContentSet
+        fourth_container:
+            type: \BackBee\ClassContent\ContentSet
     parameters:
         rendermode:
             type: "select"
