@@ -22,6 +22,7 @@
 namespace BackBee\Standard;
 
 use BackBee\BBApplication;
+use BackBee\Event\Event;
 
 /**
  * @author e.chau <eric.chau@lp-digital.fr>
@@ -55,6 +56,15 @@ class Application extends BBApplication
             && is_file($configDirectory.DIRECTORY_SEPARATOR.'doctrine.yml')
             && is_file($configDirectory.DIRECTORY_SEPARATOR.'bootstrap.yml')
         ;
+    }
+
+    /**
+     * Stop the current BBApplication instance.
+     */
+    public function stop()
+    {
+        parent::stop();
+        exit();
     }
 }
 
