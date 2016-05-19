@@ -4,14 +4,12 @@ keywords:
     default: 'cms, content manager'
     layout: 
       Article: $ContentSet[0]->$Article/Article[0]->$keywords
-      Article with pre filled column: $ContentSet[0]->$Article/Article[0]->$keywords
 description:
   name: 'description'
   content:
     default: "backbee demo website"
     layout: 
       Article: $ContentSet[0]->$Article/Article[0]->$abstract    
-      Article with pre filled column: $ContentSet[0]->$Article/Article[0]->$abstract    
   lang: 'en'
 robots:
   name: 'robots'
